@@ -16,8 +16,8 @@ exports.createItem = function(schema, dragon) {
 
   storage[schema][dragon.id] = dragon;
 
-  fs.writeFileProm(`${__dirname}/../data/${dragon.id}.json`, JSON.strigify(dragon))
-  .then((dragon) => console.log(dragon))
+  return fs.writeFileProm(`${__dirname}/../data/${dragon.id}.json`, JSON.stringify(dragon))
+  .then(() => dragon)
   .catch(err => Promise.reject(err))
 };
 

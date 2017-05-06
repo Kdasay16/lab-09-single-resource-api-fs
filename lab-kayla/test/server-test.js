@@ -11,7 +11,7 @@ describe('server testing', function() {
   before(done => {
     server.listen(3000);
     done();
-  });
+  })
 
   describe('POST method', function() {
     describe('/api/dragon route', function() {

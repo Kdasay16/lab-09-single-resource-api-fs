@@ -34,7 +34,6 @@ module.exports = function(router) {
       let dragon = new KillerDragon(req.body.name, req.body.type, req.body.hazard)
       storage.createItem('dragon', dragon)
       .then(newDragon => {
-        console.log(newDragon);
         res.writeHead(200, {'Content-Type': 'application/json'})
         res.write(JSON.stringify(newDragon))
         res.end()
