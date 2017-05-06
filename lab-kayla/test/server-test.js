@@ -34,7 +34,6 @@ describe('server testing', function() {
       .post('/api/dragon')
       .send({name: 'Phil', type: 'big', killer: true})
       .end((err, res) => {
-        console.log(res);
         resource = JSON.parse(res.text);
         done();
       })

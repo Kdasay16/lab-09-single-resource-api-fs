@@ -49,7 +49,7 @@ module.exports = function(router) {
   router.put('/api/dragon', function(req, res) {
     debug('PUT /api/dragon');
     if(req.url.query.id) {
-      storage.fetchItem('dragon', req.url.query.id)
+      storage.updateItem('dragon', req.url.query.id, req.body)
       .then(dragon => {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(dragon));

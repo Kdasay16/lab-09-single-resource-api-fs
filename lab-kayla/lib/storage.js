@@ -39,15 +39,15 @@ exports.updateItem = (schema, id, newDragon) => {
 
   if(!schema) return Promise.reject(new Error('schema required'));
   if(!id) return Promise.reject(new Error('id required'));
-
   return fs.readFileProm(`${__dirname}/../data/${id}.json`)
   .then( dragon => {
     let stringDragon = JSON.parse(dragon.toString());
     if(newDragon.name) stringDragon.name = newDragon.name;
     if(newDragon.type) stringDragon.type = newDragon.type;
     if(newDragon.killer) stringDragon.killer = newDragon.killer;
-    fs.writeFileProm(`${__dirname}/../data/${id}.json`, JSON.stringify(stringDragon));
+    return fs.writeFileProm(`${__dirname}/../data/${id}.json`, JSON.stringify(stringDragon));
   })
+  .then(() => newDragon)
   .catch(console.error)
 };
 
