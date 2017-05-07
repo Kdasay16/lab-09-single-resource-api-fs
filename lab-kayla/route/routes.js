@@ -1,7 +1,7 @@
 'use strict';
 
-const storage = require('./lib/storage');
-const KillerDragon = require('./model/data');
+const storage = require('../lib/storage');
+const KillerDragon = require('../model/data');
 const debug = require('debug')('http:server');
 
 module.exports = function(router) {
@@ -34,7 +34,6 @@ module.exports = function(router) {
       let dragon = new KillerDragon(req.body.name, req.body.type, req.body.hazard)
       storage.createItem('dragon', dragon)
       .then(newDragon => {
-        console.log(newDragon);
         res.writeHead(200, {'Content-Type': 'application/json'})
         res.write(JSON.stringify(newDragon))
         res.end()
@@ -50,7 +49,7 @@ module.exports = function(router) {
   router.put('/api/dragon', function(req, res) {
     debug('PUT /api/dragon');
     if(req.url.query.id) {
-      storage.fetchItem('dragon', req.url.query.id)
+      storage.updateItem('dragon', req.url.query.id, req.body)
       .then(dragon => {
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify(dragon));

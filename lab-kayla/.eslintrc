@@ -11,7 +11,7 @@
     "es6": true
   },
   "rules": {
-    "eqeqeq": ["error", "always"],
+    # "eqeqeq": ["error", "always"],
     "no-template-curly-in-string": "error",
     "no-console": "off",
     "no-undefined": "off",
